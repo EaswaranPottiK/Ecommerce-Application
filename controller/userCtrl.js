@@ -22,7 +22,7 @@ const loginUserCtrl = asyncHandler(async (req,res)=>{
     // console.log(findUser)
     if(findUser && await findUser.isPasswordMatched(password)){  //look here - result of schema parse . method
         // console.log("password matched")
-        res.json({message:"User login is successful"})
+        res.json(findUser)
     }
     else{
         throw new Error("Invalid Credentials")
