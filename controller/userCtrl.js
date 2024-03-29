@@ -1,3 +1,4 @@
+const { default: mongoose } = require('mongoose');
 const User = require('../models/userModel')
 const asyncHandler = require('express-async-handler')
 
@@ -14,4 +15,18 @@ const createUser = asyncHandler(async(req,res)=>{
     }
 })
 
-module.exports = createUser
+const loginUserCtrl = asyncHandler(async (req,res)=>{
+    const {email,password} = req.body;
+    // console.log(email,password)
+    const findUser = await User.findOne({email});
+    // console.log(findUser)
+    if(findUser && await findUser.isPasswordMatched(password)){  //look here - result of schema parse . method
+        // console.log("password matched")
+        res.json({message:"User login is successful"})
+    }
+    else{
+        throw new Error("Invalid Credentials")
+    }
+})
+
+module.exports = {createUser,loginUserCtrl}
