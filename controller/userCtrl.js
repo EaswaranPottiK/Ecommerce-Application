@@ -5,6 +5,7 @@ const { generateToken } = require('../config/jwtToken');
 const userModel = require('../models/userModel');
 const bcrypt = require('bcrypt')
 
+
 const createUser = asyncHandler(async(req,res)=>{
     const email = req.body.email;
     const findUser = await User.findOne({email:email})

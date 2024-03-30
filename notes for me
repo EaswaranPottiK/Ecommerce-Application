@@ -5,3 +5,5 @@ stopped video at 47.43
 i have installed node readme - with this you will be able to read documentation of a npm library in vs code itself
 
 what is {type:mongoose.Schema.Types.ObjectId
+
+npm i cookie-parser
